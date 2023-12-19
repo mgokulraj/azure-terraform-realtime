@@ -5,8 +5,8 @@ resource "azurerm_network_security_group" "web_vmnic_nsg" {
 }
 
 resource "azurerm_network_interface_security_group_association" "web_vmnic_nsg_association" {
-    depends_on = [ azurerm_network_security_rule.web_vmnic_nsg_rule_inbound ]
-  network_interface_id = azurerm_network_interface.vmlinux_websub_nic.id
+  depends_on                = [azurerm_network_security_rule.web_vmnic_nsg_rule_inbound]
+  network_interface_id      = azurerm_network_interface.vmlinux_websub_nic.id
   network_security_group_id = azurerm_network_security_group.web_vmnic_nsg.id
 }
 
