@@ -30,9 +30,10 @@ resource "azurerm_subnet_network_security_group_association" "web_subet_nsg_asso
 #locals for Security rules
 locals {
   web_inbound_ports_map = {
-    "100" : "3389"
+    "100" : "80"
     "110" : "443"
     "120" : "22"
+    "130" : "3389"
   }
 }
 
@@ -75,9 +76,10 @@ resource "azurerm_subnet_network_security_group_association" "app_subet_nsg_asso
 #locals for Security rules
 locals {
   app_inbound_ports_map = {
-    "100" : "3389"
+    "100" : "80"
     "110" : "443"
     "120" : "22"
+    "130" : "3389"
   }
 }
 

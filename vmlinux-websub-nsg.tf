@@ -13,14 +13,14 @@ resource "azurerm_network_interface_security_group_association" "web_vmnic_nsg_a
 #locals for Security rules
 locals {
   web_vmnic_inbound_ports_map = {
-    "100" : "3389"
+    "100" : "80"
     "110" : "443"
     "120" : "22"
   }
 }
 
 resource "azurerm_network_security_rule" "web_vmnic_nsg_rule_inbound" {
-  network_security_group_name = azurerm_network_security_group.web_vmnic_nsg
+  network_security_group_name = azurerm_network_security_group.web_vmnic_nsg.name
   resource_group_name         = azurerm_resource_group.rg.name
   for_each                    = local.web_vmnic_inbound_ports_map
   name                        = "Allow-port-${each.value}"
