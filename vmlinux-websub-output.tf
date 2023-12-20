@@ -1,8 +1,8 @@
 ## Public IP Address
-output "linuxvm_websub_public_ip" {
-  description = "Web Linux VM Public IP Address"
-  value       = azurerm_public_ip.linuxvm_websub_publicip.ip_address
-}
+# output "linuxvm_websub_public_ip" {
+#   description = "Web Linux VM Public IP Address"
+#   value       = azurerm_public_ip.linuxvm_websub_publicip.ip_address
+# }
 
 # Network Interface Outputs
 ## Network Interface ID
@@ -17,10 +17,10 @@ output "linuxvm_websub_nic_private_ip_address" {
 }
 
 ## Virtual Machine Public IP
-output "linuxvm_websub_public_ip_address" {
-  description = "Web Linux Virtual Machine Public IP"
-  value       = azurerm_linux_virtual_machine.linuxvm_websub.public_ip_address
-}
+# output "linuxvm_websub_public_ip_address" {
+#   description = "Web Linux Virtual Machine Public IP"
+#   value       = azurerm_linux_virtual_machine.linuxvm_websub.public_ip_address
+# }
 
 ## Virtual Machine Private IP
 output "linuxvm_websub_private_ip_address" {
