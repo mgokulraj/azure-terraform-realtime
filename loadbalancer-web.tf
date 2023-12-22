@@ -38,7 +38,7 @@ resource "azurerm_lb_rule" "lb_web_rule_app1" {
   frontend_port                  = 80
   backend_port                   = 80
   frontend_ip_configuration_name = azurerm_lb.lb_web.frontend_ip_configuration[0].name
-  #   backend_address_pool_ids = azurerm_lb_backend_address_pool.lb_web_backend_address_pool.load_balancing_rules
+  backend_address_pool_ids = [azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id]
   probe_id        = azurerm_lb_probe.lb_web_probe.id
   loadbalancer_id = azurerm_lb.lb_web.id
 }
