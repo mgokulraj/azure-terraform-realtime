@@ -8,7 +8,7 @@ resource "azurerm_network_interface" "vmlinux_websub_nic" {
     name                          = "vmlinux-websub-ip-1"
     subnet_id                     = azurerm_subnet.websubnet.id
     private_ip_address_allocation = "Dynamic"
-    # public_ip_address_id          = azurerm_public_ip.linuxvm_websub_publicip.id
+    # public_ip_address_id          = azurerm_public_ip.linuxvm_websub_publicip[count.index].id
     # primary                       = true
   }
 }
