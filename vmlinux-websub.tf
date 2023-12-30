@@ -18,14 +18,14 @@ CUSTOM_DATA
 }
 
 resource "azurerm_linux_virtual_machine" "linuxvm_websub" {
-  count                 = var.vmlinux_web_instance_count
-  name                  = "${local.resource_name_prefix}-linuxvm-websub-${count.index}"
+  for_each = var.vmlinux_web_instance_count
+  name                  = "${local.resource_name_prefix}-linuxvm-websub-${each.key}"
   computer_name         = "webserver-${count.index}"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
   size                  = "Standard_DS1_v2"
   admin_username        = "rsadmin"
-  network_interface_ids = [element(azurerm_network_interface.vmlinux_websub_nic[*].id, count.index)]
+  network_interface_ids = [azurerm_network_interface.vmlinux_websub_nic[each.key].id]
   admin_ssh_key {
     username   = "rsadmin"
     public_key = file("${path.module}/ssh-keys/terraform-azure.pub")
