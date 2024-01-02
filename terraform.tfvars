@@ -22,7 +22,4 @@ bastion_subnet_address = ["10.1.100.0/24"]
 # bastion_service_subnet_name    = "AzureBastionSubnet"
 # bastion_service_subnet_address = ["10.1.101.0/27"]
 
-vmlinux_web_instance_count = {
-    "vm1" = "1022",
-    "vm2" = "2022"
-  }
+vmsslinux_web_nsg_ports_inbound = [22, 80, 443]

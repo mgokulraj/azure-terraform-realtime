@@ -38,13 +38,13 @@ resource "azurerm_lb_rule" "lb_web_rule_app1" {
   frontend_port                  = 80
   backend_port                   = 80
   frontend_ip_configuration_name = azurerm_lb.lb_web.frontend_ip_configuration[0].name
-  backend_address_pool_ids = [azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id]
-  probe_id        = azurerm_lb_probe.lb_web_probe.id
-  loadbalancer_id = azurerm_lb.lb_web.id
+  backend_address_pool_ids       = [azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id]
+  probe_id                       = azurerm_lb_probe.lb_web_probe.id
+  loadbalancer_id                = azurerm_lb.lb_web.id
 }
 
 resource "azurerm_network_interface_backend_address_pool_association" "lb_web_nic_association" {
-  for_each = var.vmlinux_web_instance_count
+  for_each                = var.vmlinux_web_instance_count
   network_interface_id    = azurerm_network_interface.vmlinux_websub_nic[each.key].id
   ip_configuration_name   = azurerm_network_interface.vmlinux_websub_nic[each.key].ip_configuration[0].name
   backend_address_pool_id = azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id

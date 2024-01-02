@@ -18,7 +18,7 @@ CUSTOM_DATA
 }
 
 resource "azurerm_linux_virtual_machine" "linuxvm_websub" {
-  for_each = var.vmlinux_web_instance_count
+  for_each              = var.vmlinux_web_instance_count
   name                  = "${local.resource_name_prefix}-linuxvm-websub-${each.key}"
   computer_name         = "webserver-${each.key}"
   resource_group_name   = azurerm_resource_group.rg.name
