@@ -17,14 +17,14 @@ sudo curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254/metadata/inst
 CUSTOM_DATA  
 }
 resource "azurerm_linux_virtual_machine_scale_set" "vmsslinux_websub" {
-  name                  = "${local.resource_name_prefix}-linuxvmss-websub"
+  name = "${local.resource_name_prefix}-linuxvmss-websub"
   # computer_name         = "webserver"
-  resource_group_name   = azurerm_resource_group.rg.name
-  location              = azurerm_resource_group.rg.location
-  sku = Standard_DS1_v2
-  instances = 2
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  sku                 = Standard_DS1_v2
+  instances           = 2
 
-  admin_username        = "rsadmin"
+  admin_username = "rsadmin"
   admin_ssh_key {
     username   = "rsadmin"
     public_key = file("${path.module}/ssh-keys/terraform-azure.pub")
@@ -43,14 +43,14 @@ resource "azurerm_linux_virtual_machine_scale_set" "vmsslinux_websub" {
   upgrade_mode = "Automatic"
 
   network_interface {
-    name = "vmss-websub-nic"
-    primary = true
+    name                      = "vmss-websub-nic"
+    primary                   = true
     network_security_group_id = azurerm_network_security_group.vmsslinux_web_nsg.id
     ip_configuration {
-      name = "internal"
-      primary = true
-      subnet_id = azurerm_subnet.websubnet.id
-      load_balancer_backend_address_pool_ids = [ azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id ]
+      name                                   = "internal"
+      primary                                = true
+      subnet_id                              = azurerm_subnet.websubnet.id
+      load_balancer_backend_address_pool_ids = [azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id]
     }
   }
   custom_data = base64encode(local.webvm_custom_data)
