@@ -16,16 +16,15 @@ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 21
 sudo curl -H "Metadata:true" --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2020-09-01" -o /var/www/html/app1/metadata.html
 CUSTOM_DATA  
 }
-
-resource "azurerm_linux_virtual_machine" "linuxvm_websub" {
-  for_each              = var.vmlinux_web_instance_count
-  name                  = "${local.resource_name_prefix}-linuxvm-websub-${each.key}"
-  computer_name         = "webserver-${each.key}"
+resource "azurerm_linux_virtual_machine_scale_set" "vmsslinux_websub" {
+  name                  = "${local.resource_name_prefix}-linuxvmss-websub"
+  # computer_name         = "webserver"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_DS1_v2"
+  sku = Standard_DS1_v2
+  instances = 2
+
   admin_username        = "rsadmin"
-  network_interface_ids = [azurerm_network_interface.vmlinux_websub_nic[each.key].id]
   admin_ssh_key {
     username   = "rsadmin"
     public_key = file("${path.module}/ssh-keys/terraform-azure.pub")
@@ -40,5 +39,20 @@ resource "azurerm_linux_virtual_machine" "linuxvm_websub" {
     sku       = "83-gen2"
     version   = "latest"
   }
+
+  upgrade_mode = "Automatic"
+
+  network_interface {
+    name = "vmss-websub-nic"
+    primary = true
+    network_security_group_id = azurerm_network_security_group.vmsslinux_web_nsg.id
+    ip_configuration {
+      name = "internal"
+      primary = true
+      subnet_id = azurerm_subnet.websubnet.id
+      load_balancer_backend_address_pool_ids = [ azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id ]
+    }
+  }
   custom_data = base64encode(local.webvm_custom_data)
+
 }

@@ -1,5 +1,5 @@
-resource "azurerm_network_security_group" "web_vmss_nsg" {
-  name                = "${local.resource_name_prefix}-web-vmss-nsg"
+resource "azurerm_network_security_group" "vmsslinux_web_nsg" {
+  name                = "${local.resource_name_prefix}-vmss-web-nsg"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
 

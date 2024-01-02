@@ -43,9 +43,9 @@ resource "azurerm_lb_rule" "lb_web_rule_app1" {
   loadbalancer_id                = azurerm_lb.lb_web.id
 }
 
-resource "azurerm_network_interface_backend_address_pool_association" "lb_web_nic_association" {
-  for_each                = var.vmlinux_web_instance_count
-  network_interface_id    = azurerm_network_interface.vmlinux_websub_nic[each.key].id
-  ip_configuration_name   = azurerm_network_interface.vmlinux_websub_nic[each.key].ip_configuration[0].name
-  backend_address_pool_id = azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id
-}
+# resource "azurerm_network_interface_backend_address_pool_association" "lb_web_nic_association" {
+#   for_each                = var.vmlinux_web_instance_count
+#   network_interface_id    = azurerm_network_interface.vmlinux_websub_nic[each.key].id
+#   ip_configuration_name   = azurerm_network_interface.vmlinux_websub_nic[each.key].ip_configuration[0].name
+#   backend_address_pool_id = azurerm_lb_backend_address_pool.lb_web_backend_address_pool.id
+# }
