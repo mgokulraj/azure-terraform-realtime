@@ -1,19 +1,3 @@
-# Locals Block for custom data
-locals {
-bastion_host_custom_data = <<CUSTOM_DATA
-#!/bin/sh
-#sudo yum update -y
-sudo yum install -y httpd
-sudo systemctl enable httpd
-sudo systemctl start httpd  
-sudo systemctl stop firewalld
-sudo systemctl disable firewalld
-sudo yum install -y telnet
-sudo chmod -R 777 /var/www/html 
-sudo echo "Welcome to stacksimplify - Bastion Host - VM Hostname: $(hostname)" > /var/www/html/index.html
-CUSTOM_DATA  
-}
-
 resource "azurerm_public_ip" "linuxvm_bassub_publicip" {
   name                = "${local.resource_name_prefix}-linuxvm-bastion-publicip"
   resource_group_name = azurerm_resource_group.rg.name
@@ -57,5 +41,4 @@ resource "azurerm_linux_virtual_machine" "linuxvm_bassub" {
     sku       = "83-gen2"
     version   = "latest"
   }
-  custom_data = base64encode(local.bastion_host_custom_data)
 }
