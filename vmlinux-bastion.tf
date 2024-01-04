@@ -1,6 +1,6 @@
 # Locals Block for custom data
 locals {
-bastion_host_custom_data = <<CUSTOM_DATA
+  bastion_host_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 #sudo yum update -y
 sudo yum install -y httpd
