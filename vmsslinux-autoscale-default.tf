@@ -27,7 +27,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Increase"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
@@ -50,7 +50,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Decrease"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
@@ -74,7 +74,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Increase"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
@@ -97,7 +97,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Decrease"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
@@ -121,7 +121,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Increase"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
@@ -144,7 +144,7 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_web_autoscale" {
     rule {
       scale_action {
         direction = "Decrease"
-        type      = "Changecount"
+        type      = "ChangeCount"
         value     = 1
         cooldown  = "PT5M"
       }
