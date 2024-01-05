@@ -21,3 +21,9 @@ variable "location" {
   type        = string
   default     = "eastus2"
 }
+
+variable "source_address_prefix" {
+  description = "My vodafone public IP"
+  type = string
+  default = "193.237.208.0"
+}

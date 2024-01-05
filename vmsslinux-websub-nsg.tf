@@ -14,7 +14,7 @@ resource "azurerm_network_security_group" "vmsslinux_web_nsg" {
       protocol                   = "Tcp"
       source_port_range          = "*"
       destination_port_range     = security_rule.value
-      source_address_prefix      = "*"
+      source_address_prefix      = local.source_address_prefix
       destination_address_prefix = "*"
     }
   }
