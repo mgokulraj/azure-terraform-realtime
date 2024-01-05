@@ -16,8 +16,8 @@ resource "azurerm_monitor_autoscale_setting" "vmsslinux_app_autoscale" {
   profile {
     name = "default-profile"
     capacity {
-      default = 2
-      minimum = 2
+      default = 1
+      minimum = 1
       maximum = 6
     }
 
