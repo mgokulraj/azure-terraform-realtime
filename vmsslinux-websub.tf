@@ -1,5 +1,5 @@
 locals {
-webvm_custom_data = <<CUSTOM_DATA
+  webvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 #sudo yum update -y
 sudo yum install -y httpd

@@ -17,11 +17,11 @@ resource "azurerm_lb" "lb_app" {
   tags                = local.common_tags
 
   frontend_ip_configuration {
-    name                 = "lb-app-pip-1"
-    subnet_id = azurerm_subnet.appsubnet.id
+    name                          = "lb-app-pip-1"
+    subnet_id                     = azurerm_subnet.appsubnet.id
     private_ip_address_allocation = "Static"
-    private_ip_address_version = "IPv4"
-    private_ip_address = "10.1.11.241"
+    private_ip_address_version    = "IPv4"
+    private_ip_address            = "10.1.11.241"
     # public_ip_address_id = azurerm_public_ip.lb_app_pip.id
   }
 }

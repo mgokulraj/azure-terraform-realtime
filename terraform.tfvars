@@ -1,7 +1,7 @@
-business            = "cloudops"
-environment         = "dev"
-resource_group_name = "rg"
-location            = "eastus"
+business              = "cloudops"
+environment           = "dev"
+resource_group_name   = "rg"
+location              = "eastus"
 source_address_prefix = "193.237.208.0"
 
 

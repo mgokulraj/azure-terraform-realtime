@@ -1,5 +1,5 @@
 locals {
-appvm_custom_data = <<CUSTOM_DATA
+  appvm_custom_data = <<CUSTOM_DATA
 #!/bin/sh
 sudo yum install -y httpd
 sudo systemctl enable httpd
