@@ -48,7 +48,7 @@ resource "azurerm_network_security_rule" "web_nsg_rule_inbound" {
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = each.value
-  source_address_prefix       = "*"
+  source_address_prefix       = local.source_address_prefix
   destination_address_prefix  = "*"
 }
 
@@ -94,7 +94,7 @@ resource "azurerm_network_security_rule" "app_nsg_rule_inbound" {
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = each.value
-  source_address_prefix       = "*"
+  source_address_prefix       = local.source_address_prefix
   destination_address_prefix  = "*"
 }
 
@@ -140,7 +140,7 @@ resource "azurerm_network_security_rule" "db_nsg_rule_inbound" {
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = each.value
-  source_address_prefix       = "*"
+  source_address_prefix       = local.source_address_prefix
   destination_address_prefix  = "*"
 }
 
@@ -185,6 +185,6 @@ resource "azurerm_network_security_rule" "bastion_nsg_rule_inbound" {
   protocol                    = "Tcp"
   source_port_range           = "*"
   destination_port_range      = each.value
-  source_address_prefix       = "*"
+  source_address_prefix       = local.source_address_prefix
   destination_address_prefix  = "*"
 }
