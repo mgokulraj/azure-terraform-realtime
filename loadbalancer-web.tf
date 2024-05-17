@@ -5,6 +5,7 @@ resource "azurerm_public_ip" "lb_web_pip" {
   allocation_method   = "Static"
   sku                 = "Standard"
   tags                = local.common_tags
+  domain_name_label = azurerm_resource_group.rg.name
 }
 
 resource "azurerm_lb" "lb_web" {
