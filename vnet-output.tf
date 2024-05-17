@@ -38,15 +38,15 @@ output "db_sub_id" {
   value       = azurerm_subnet.dbsubnet.id
 }
 
-output "bastion_sub_name" {
-  description = "bastion Subnet Name"
-  value       = azurerm_subnet.bastionsubnet.name
-}
+# output "bastion_sub_name" {
+#   description = "bastion Subnet Name"
+#   value       = azurerm_subnet.bastionsubnet.name
+# }
 
-output "bastion_sub_id" {
-  description = "bastion Subnet ID"
-  value       = azurerm_subnet.bastionsubnet.id
-}
+# output "bastion_sub_id" {
+#   description = "bastion Subnet ID"
+#   value       = azurerm_subnet.bastionsubnet.id
+# }
 
 output "web_nsg_name" {
   description = "Web Subnet NSG Name"
