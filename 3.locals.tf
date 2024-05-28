@@ -6,6 +6,6 @@ locals {
   common_tags = {
     owners      = local.owners
     environment = local.environment
-    Tag = "demo-tag1"
+    Tag         = "demo-tag1"
   }
 }

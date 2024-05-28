@@ -19,14 +19,14 @@ CUSTOM_DATA
 
 resource "azurerm_linux_virtual_machine" "linuxvm_websub" {
   name                  = "${local.resource_name_prefix}-linuxvm-websub"
-  computer_name         = "webserver-${count.index}"
+  computer_name         = "webserver"
   resource_group_name   = azurerm_resource_group.rg.name
   location              = azurerm_resource_group.rg.location
-  size                  = "Standard_DS1_v2"
-  admin_username        = "rsadmin"
+  size                  = var.vmlinux_web_size
+  admin_username        = var.vmlinux_web_user
   network_interface_ids = [azurerm_network_interface.vmlinux_websub_nic.id]
   admin_ssh_key {
-    username   = "rsadmin"
+    username   = var.vmlinux_web_user
     public_key = file("${path.module}/ssh-keys/terraform-azure.pub")
   }
   os_disk {
